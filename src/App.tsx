@@ -1,21 +1,19 @@
-import type { Component } from 'solid-js';
+import { lazy, type Component } from 'solid-js';
+import { RouteDefinition, Router } from '@solidjs/router';
+
+import { Route } from '~/constants/route';
+import Layout from '~/components/Layout';
+
+const routes: RouteDefinition[] = [
+  {
+      path: Route.HOME,
+      component: lazy(() => import('~/pages')),
+  },
+]
 
 const App: Component = () => {
   return (
-    <div>
-      <header>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
-    </div>
+    <Router root={Layout}>{routes}</Router>
   );
 };
 

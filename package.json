@@ -16,6 +16,7 @@
     "vite-plugin-solid": "^2.10.2"
   },
   "dependencies": {
+    "@solidjs/router": "^0.14.1",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.39",
     "solid-js": "^1.8.18",
