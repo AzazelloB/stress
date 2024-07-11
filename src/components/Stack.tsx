@@ -9,6 +9,7 @@ export interface Card {
 
 interface StackProps {
   cards: Card[];
+  growDir: 'left' | 'right';
 }
 
 const Stack: Component<StackProps> = (props) => {
@@ -19,8 +20,8 @@ const Stack: Component<StackProps> = (props) => {
           <Card
             class="absolute w-full"
             style={{
-              bottom: `${i() * 3}px`,
-              right: `${i() * 3}px`,
+              bottom: `${i() * 1}px`,
+              [props.growDir]: `${i() * -1}px`,
             }}
             face={card.face}
             suit={card.suit}

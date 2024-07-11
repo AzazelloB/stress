@@ -17,6 +17,174 @@ const HomePage: Component = () => {
       suit: Suit.DIAMOND,
       face: 6,
     },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
+    {
+      suit: Suit.CLUB,
+      face: 11,
+    },
+    {
+      suit: Suit.SPADE,
+      face: 5,
+    },
+    {
+      suit: Suit.DIAMOND,
+      face: 6,
+    },
   ])
   const [colR, setColR] = createSignal<TCard[]>([
     {
@@ -42,13 +210,13 @@ const HomePage: Component = () => {
       </div>
 
       <div class="grow flex items-center justify-center gap-64">
-        <Stack cards={colL()} />
+        <Stack cards={colL()} growDir="left" />
 
         <div>
           btn
         </div>
 
-        <Stack cards={colR()} />
+        <Stack cards={colR()} growDir="right" />
       </div>
 
       <div>
