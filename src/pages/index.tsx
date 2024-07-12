@@ -1,212 +1,52 @@
 import { createSignal, type Component } from 'solid-js';
 
-import Card, { Suit } from '~/components/Card';
-import Stack, { type Card as TCard } from '~/components/Stack';
+import { pluck, shuffle } from '~/utils/array';
+
+import { Face, Suit } from '~/components/Card';
+import Stack, { type Card } from '~/components/Stack';
+
+const deck: Card[] = [];
+
+const suits = Object.values(Suit).filter(Number.isInteger) as Suit[]
+for (const suit of suits) {
+  for (let face = 1; face <= 13; face++) {
+    deck.push({
+      suit,
+      face: face as Face,
+    })
+  }
+}
 
 const HomePage: Component = () => {
-  const [colL, setColL] = createSignal<TCard[]>([
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.SPADE,
-      face: 5,
-    },
-    {
-      suit: Suit.DIAMOND,
-      face: 6,
-    },
-  ])
-  const [colR, setColR] = createSignal<TCard[]>([
-    {
-      suit: Suit.CLUB,
-      face: 11,
-    },
-    {
-      suit: Suit.CLUB,
-      face: 3,
-    },
-    {
-      suit: Suit.HEART,
-      face: 2,
-    },
-  ])
-  
+  const [colL, setColL] = createSignal<Card[]>([])
+  const [colR, setColR] = createSignal<Card[]>([])
+  const [hand, setHand] = createSignal<Card[]>([])
+  const [enemyHand, setEnemyHand] = createSignal<Card[]>([])
+
+  const startGame = () => {
+    const randomizedDeck = shuffle(deck)
+
+    pushColL(pluck(randomizedDeck))
+    pushColR(pluck(randomizedDeck))
+
+    setHand(randomizedDeck.splice(0, Math.floor(randomizedDeck.length / 2)))
+    setEnemyHand(randomizedDeck)
+  }
+
+  const pushColL = (card: Card) => {
+    setColL(prev => [...prev, card])
+  }
+
+  const pushColR = (card: Card) => {
+    setColR(prev => [...prev, card])
+  }
+
+  startGame()
+
   return (
     <div class="flex flex-col h-full">
       <div>
-        <div class="w-32">
-          <Card face={1} suit={Suit.HEART} />
-        </div>
+        <Stack cards={enemyHand()} growDir="left" />
       </div>
 
       <div class="grow flex items-center justify-center gap-64">
@@ -220,9 +60,7 @@ const HomePage: Component = () => {
       </div>
 
       <div>
-        <div class="w-32">
-          <Card face={1} suit={Suit.SPADE} />
-        </div>
+        <Stack cards={hand()} growDir="left" />
       </div>
     </div>
   );
