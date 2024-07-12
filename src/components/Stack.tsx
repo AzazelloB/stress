@@ -9,6 +9,7 @@ export interface Card {
 
 interface StackProps {
   cards: Card[];
+  // TODO replace with precentage from the middle of the screen
   growDir: 'left' | 'right';
 }
 
